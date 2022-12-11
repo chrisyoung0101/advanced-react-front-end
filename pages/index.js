@@ -1,9 +1,6 @@
-// this will be similar to our index.html
+import Page from '../components/Page';
 
+// this will be similar to our index.html
 export default function IndexPage() {
-  return (
-    <div>
-      <p>Hello Wowld!</p>
-    </div>
-  );
+  return <p>Hello Wowld!</p>;
 }
