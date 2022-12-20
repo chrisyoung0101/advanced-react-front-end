@@ -11,6 +11,7 @@ const ALL_PRODUCTS_QUERY = gql`
     allProducts {
       id
       name
+      price
       description
       photo {
         id

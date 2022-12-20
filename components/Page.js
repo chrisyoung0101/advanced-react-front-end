@@ -21,6 +21,9 @@ const GlobalStyles = createGlobalStyle`
     --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
     ${'' /* reset */}
     box-sizing: border-box;
+    //to get to a base font size of 10px
+    //we use 62.5% instead of an explicit 10px -> allows user to override the value in the browser settings 
+    font-size: 62.5%;
   }
   ${'' /* reset */}
   *, *:before, *:after {
