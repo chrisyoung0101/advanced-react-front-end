@@ -1,6 +1,5 @@
-import Page from '../components/Page';
-
 // this will be similar to our index.html
-export default function IndexPage() {
-  return <p>Hello Wowld!</p>;
-}
+
+// somehow this imports whatever is marked as default from products.js and exports it in one line.
+// this essentially makes what we are doing with index.js all into one line
+export { default } from './products';
