@@ -1,9 +1,12 @@
-import { useState } from 'react';
 import useForm from '../lib/useForm';
 
 export default function CreateProduct() {
   // using curly braces because we are returning an object from useForm() custom hook
-  const { inputs, handleChange } = useForm();
+  const { inputs, handleChange } = useForm({
+    name: 'Nice Hat',
+    price: 23424,
+    description: 'This is so fabulous!',
+  });
 
   return (
     <form>
@@ -14,27 +17,19 @@ export default function CreateProduct() {
           id="name"
           name="name"
           placeholder="Name"
-          value={name}
-          onChange={(e) => {
-            console.log(e.target.value);
-            // needed to sync the state which will allow you to type and type over the placeholder
-            setName(e.target.value);
-          }}
+          defaultValue={inputs.name}
+          onChange={handleChange}
         />
       </label>
       <label htmlFor="price">
         Price
         <input
-          type="text"
+          type="number"
           id="price"
           name="price"
           placeholder="Price"
-          value={price}
-          onChange={(e) => {
-            console.log(e.target.value);
-            // needed to sync the state which will allow you to type and type over the placeholder
-            setName(e.target.value);
-          }}
+          defaultValue={inputs.price}
+          onChange={handleChange}
         />
       </label>
     </form>
