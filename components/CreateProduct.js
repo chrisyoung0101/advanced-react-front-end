@@ -2,7 +2,7 @@ import useForm from '../lib/useForm';
 
 export default function CreateProduct() {
   // using curly braces because we are returning an object from useForm() custom hook
-  const { inputs, handleChange } = useForm({
+  const { inputs, handleChange, clearForm, resetForm } = useForm({
     name: 'Nice Hat',
     price: 23424,
     description: 'This is so fabulous!',
@@ -17,7 +17,7 @@ export default function CreateProduct() {
           id="name"
           name="name"
           placeholder="Name"
-          defaultValue={inputs.name}
+          value={inputs.name}
           onChange={handleChange}
         />
       </label>
@@ -28,10 +28,18 @@ export default function CreateProduct() {
           id="price"
           name="price"
           placeholder="Price"
-          defaultValue={inputs.price}
+          value={inputs.price}
           onChange={handleChange}
         />
       </label>
+
+      <button type="button" onClick={clearForm}>
+        Clear Form
+      </button>
+
+      <button type="button" onClick={resetForm}>
+        Reset Form
+      </button>
     </form>
   );
 }
