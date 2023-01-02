@@ -61,6 +61,7 @@ export default function CreateProduct() {
         // directly in the createProduct() function when you don't know the values ahead of time.
         const res = await createProduct();
         console.log(res);
+        clearForm();
       }}
     >
       {/* see the actual ErrorMessage.js component which is named  DisplayError here because that is how we exported it. */}
