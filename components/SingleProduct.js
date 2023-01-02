@@ -4,6 +4,8 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import DisplayError from './ErrorMessage';
 
+// something
+
 const ProductStyles = styled.div`
   display: grid;
   grid-auto-columns: 1fr;
