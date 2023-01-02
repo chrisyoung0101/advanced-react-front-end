@@ -455,10 +455,27 @@ const SINGLE_ITEM_QUERY = gql`
   }
 `;
 
-For above, to change the name from what comes back from the API, here we renamed the query "items" and we will access the data with "data.items.*". 
+For above, to change the name from what comes back from the API, here we renamed the query "items" and we will access the data with "data.items.*". Use case here is when we are querying two different Products but since we can't have the same name we rename to "items".
 
 
+const SINGLE_ITEM_QUERY = gql`
+  query SINGLE_ITEM_QUERY($id: ID!) {
+    items: Product(where: { id: $id }) { 
+      name
+      price
+      description
+    }
+  }
+`;
 
 
+Define the title tag in Next.js (see SingleProduct.js) : 
+
+use this : 
+import Head from 'next/head';
+
+Then... whatever gets put in the <Head> tag Next.js will stick it in the Head of the document.  
+Gatsby we had to use react-helmet to do this.
 
 
+Start module 6
