@@ -6,7 +6,7 @@ import Product from './Product';
 
 // you write a query in the playground, probably make sure it works, then save it as a gql (a proper graphql query?)
 // this is what apollo needs or something
-const ALL_PRODUCTS_QUERY = gql`
+export const ALL_PRODUCTS_QUERY = gql`
   query ALL_PRODUCTS_QUERY {
     allProducts {
       id
