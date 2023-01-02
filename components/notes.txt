@@ -1,0 +1,464 @@
+
+
+goal : just to capture intalls and things
+
+download zip 
+open separately FE & BE 
+in each DIR run : npm install
+run next.js app : npm run dev 
+
+/////
+children : 
+Scenario -> index.js or even App.js or whatever you are rendering the Page componet with an open tag <Page></Page> but inside you've got some child that you want to render.  In order to render the children you've got to pass it via props in the Page.js component : 
+
+import Page from '../components/Page';
+
+export default function IndexPage() {
+  return (
+    <Page>
+      <p>Hello Wowld!</p>
+    </Page>
+  );
+}
+
+
+
+export default function Page({ children }) {
+  return (
+    <div>
+      <p>I am the page component</p>
+      {children}
+    </div>
+  );
+} 
+
+/////
+Next.js and _app.js : "_" makes it the highest component in pages directory
+
+/////
+Next.js & custom document : 
+_document.js  
+
+
+lowercase means it is HTML <header></header>
+
+emmet exapnd abreviation expands tags for you
+
+linking from page to page : 
+note : link here is from Next
+
+linking within your site : use Link tag
+linking outside the site : use the anchor tag
+
+
+select all lines : select at line #s 
+put a cursor on each line : option + click 
+
+Styled Components : 
+Example -> styled.header`` means we are adding styles to this header HTML tag 
+
+CSS : you select a Link to be styled with 'a' 
+
+shortcuts aka completions (still Emmet:Expand Abbreviations) : 
+fz4r = font-size: 4rem;
+ml2r = margin-left: 2rem;
+z2 = z-index: 2;
+
+
+var(--black, black) where --black is the variable and the second parameter of black is the fallback value
+
+GlobalStyles is going in Page.js (not a Next page).  Why here? 
+
+
+
+Setting a font on the body does not apply it to a button so you must style the button too. 
+
+
+The in progress bar : 
+NProgress
+
+
+
+CSS Flicker on reload page : 
+
+
+-has to do with Styled Components and the random IDs created 
+
+Reason for flicker : 
+Styles were not getting rendered on the server - Flash of unstyled text
+
+Resolution : see getInitialProps in _document.js -> this will make the style sheets server side rendered now. 
+
+
+
+
+Possibly with this error - 
+"Warning Prop `className` did not match. Server ... " 
+- fix it by deleting the .next dir and restarting
+
+
+
+Keystone : kind of a layer that sits on top of MongoDB and postgress and another DB type 
+
+We can :
+run mongodb locally - which can be a pain look at the docs 
+
+recommended : use MongoDB Atlas 
+
+
+MongoDB database username & PW : 
+wallwalker
+AL2Fh6SSapPZFGTI
+
+In MongoDB, create a new Organization for each new project
+
+MongoDB database user (goes in the .env file with theDATABASE_URL): 
+MongoDBSickFits
+AdarRyZv4uJODmGI
+
+Probably need to follow video 10 again to set up another MongoDb
+
+GraphQL example : 
+note -> you've got to ask for each bit of data excplicitly meaning no give me back all data.
+
+//here we are asking for only these properties from 
+//all products
+
+query {
+  allProducts { 
+	name	
+	description
+	price
+   }
+}
+
+cool thing about GraphQL is you don't need endpoints you just ask for what you want.
+
+mutation : keyword like query but for I guess creating, deleting and updating data. 
+
+Note -> we use relationships in keystone? that will allow us to make queries like doing a forEach or something in the query. 
+
+Backend : we are doing typescript
+
+run keystone : 
+npm run dev 
+
+schema : description of how the data will look like
+
+
+keystone.js is keystone server config
+
+session : when someone logs in, it sets a cookie, which gives the user a session where they are logged in until they log out or the cookie expires.  
+
+session when logged out looks like : 
+{
+  listKey: 'User',
+  itemId: '639ddbea4da39cfda0dabc3c',
+  data: [Object: null prototype] { id: '639ddbea4da39cfda0dabc3c' }
+}
+
+
+section on seed data shows how to get initial test data into your keystone and mongodb compass. 
+
+Note : you're seed data images will appear broken which we should be fixing later.
+
+get your own data in : see end of video 18
+
+In keystone, api/graphql playgorund thing, use ctrl + space to show all possible selections for a query item. ... but not working.
+
+
+Apollo Client: sounds like kinda similar what a java backend manages
+
+
+Wes gave us withData.js in lib, in the FE, helps to import images cause apollo boost? doesn't 
+
+Apollo Dev Tools : this gets installed automagically in your chrome browser from the Apollo specific code we've written.
+
+Using GraphQL extension for VSCode by Orsen Kucher
+
+key for mapping in React is whatever is unique to that piece of data
+
+React Components dev tools : sometimes there's to much stuff to see what you want, so try going to the components dev tools tab and then disabling Hide components where type equels dom nodes and then say if you are looking for the products list you just rendered then it should show up. 
+
+///
+IF you get this error in the console : 
+react-dom.development.js?61bb:67 Warning: Prop `className` did not match. Server: "sc-gsDKAQ hGmukn" Client: "sc-bdvvtL gFGQfC"
+
+Then do this : 
+kill the frontend in the terminal
+delete .next folder
+run: npm run dev
+///
+
+something about how you see logs in the terminal which is coming from the server as this stuff is server rendered & then you see the same logs in the console of the browser and which is it basically rehydrating and updating itself on the client.
+
+Nested chaining : 
+product?.photo?.image?.publicUrlTransformed 
+...says : does product exist? does image exist? 
+something about for photos they might not be accessed the same way each time and this helps out maybe? 
+
+
+Next.js : what you put in a page will get dumped in the <body> where I think files like _app.js are for maybe the other stuff that goes in an HTML doc like head and whatever eventhough these "_" files can be used for other things.  They are higher up the chain than pages and pages are higher up the chain than Components.
+
+lib & utils folders : where you put handy functions 
+
+Intl API is a great formatter
+
+
+Target : guess what?!  All the attributes on the <input /> is the target! 
+
+State & Inputs : 
+React is strict with state.  You must listen for a change event on an input and when that happens you need to intercept what the user typed, put it back into state which triggers a rerender and updates the value so like as in value={name} where 'name' piece of state gets updated.
+
+
+A react form handling state 101 : 
+
+import { useState } from 'react';
+
+export default function CreateProduct() {
+  const [name, setName] = useState('Coo');
+
+  return (
+    <form>
+      <label htmlFor="name">
+        Name
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => {
+            console.log(e.target.value);
+            // needed to sync the state which will allow you to type and type over the placeholder
+            setName(e.target.value);
+          }}
+        />
+      </label>
+    </form>
+  );
+}
+
+
+
+Note : if you want to surface data or functionality from a custom hook you must return it.
+
+
+Warning Solution : 
+"You provided a `value` prop to a form field without an `onChange` handler." - take the value attribute/prop and just name it defaultValue. Also, this assumes that you've already set state to some default value.
+
+Looking for state change to see if something is working.  This is coming from a custom hook tied to useState() : 
+React dev tools components -> search component name -> click at top level aka should be component name -> look for hooks below and ther is you data
+
+
+
+Gotcha : 
+HTML inputs always give you a String even if you entered a number.  If the code you are sending this data to expects a number and you've not handled this you'll get an error.
+
+Stopped at 17:50 - need to get the number to show as a number type for price value.  Still shows as a string in react dev tools
+
+Disabling all the inputs in a form with fieldset : 
+
+fieldset allows you to wrap all your form stuff inside of it and control if all fields are enabled/disabled.
+
+Note : textarea element does self close in React land
+
+Note : e.preventDefault() also prevents the data from being put in the URL string making it not visible to everyone.
+
+required attribute on an input tag makes that bit of data required - must put something in the box users! 
+
+
+Uploading files and Graphql :
+no standard on how to do it currently.
+this project uses apollo-upload-client
+
+
+Graphql Mutation : 
+
+Use Playground to first see if your mutation will work.
+
+Example of what is going on : 
+from playground -> 
+
+mutation {
+  createProduct(data:{  //this is what we pass into the function as in 
+                        // "go and make this"
+    name: "Sample Product",
+    description: "Test",
+    price: 125
+  }) {  // this is what we are asking to get back from the DB
+    id
+    price
+    description
+  }
+}
+
+
+
+
+
+
+Note : this is graphql syntax not to be confused with other syntax
+
+Note : requires -> import gql from 'graphql-tag';
+
+See CREATE_PRODUCT_MUTATION : running this will create a "Sample Product" in Keystone and will add whatever data you give it as the values of the fields.
+
+const CREATE_PRODUCT_MUTATION = gql`
+  mutation CREATE_PRODUCT_MUTATION (  //name it.  here it is 	     
+    //$ = graphql vars                                  //CREATE_PRODUCT_MUTATION
+    $name: String!
+    $description: String!
+    $price: Int!
+    $image: Upload
+  ){
+    createProduct(
+      data: {
+        name: $name
+        description: $description
+        price: $price
+        status: "AVAILABLE"
+        photo: { create: { image: $image, altText: $name } }
+      }
+    ) {
+      id
+      price 
+      description
+      name
+    }
+  }
+`;
+
+
+understanding this bit : 
+
+
+Doing a nested create and linking them as a relationship all from one query which is supported in keystone.js and others. 
+
+
+photo: { create: { image: $image, altText: $name } } -> this is saying go ahead and create the relationship and the photo (item) behind the scenes.
+
+
+photo is not a field persay.  It is it's own type with a relationship.
+
+///// sequence of things happening once you submit the form with the "+ Add Product" button : 
+Click the button with your data loaded in the form inputs.
+Disables the form.
+Progress bar/loading indicator animates while in loading state.
+We then await createProduct() and get back our "res" response.
+Also, once we get success to all above we also run the function to clear out the form so that only placeholder text will appear. 
+
+Note that in CreateProduct.js, in the Form tag onSubmit, the "res", which has "res.data" on it is the same as the destructured data we are getting when we define useMutation : 
+
+
+const res = await createProduct(); //res.data
+	=
+const [createProduct, { loading, error, data }] = useMutation(
+
+Why is the above important?  In React, we can access either of the two datas and know that it will always be updated.
+
+
+video 25 : 
+dealing with handling that when we submit a new product via the UI and go back to see the list of products on the Products page, the new product is not there until we manually refresh the page.  
+
+Wes mentions two ways of handling this.
+
+
+video 26 : how to programmatically change the page after product creation.
+
+Next.js has APIs to handle this. 
+We use 
+import Router from 'next/router';
+
+
+An aside, create a directory and a file in vs code in one go : 
+
+select create new file
+type the name of the dir and the file : product/something.js
+
+
+Next.js specific : 
+
+product/[id].js -> says use this template for anything that 
+matches /product/anything.  Next.js will give us a query param, in this case [id] so that we can go look up the item in our DB.
+
+
+
+Query a single product by ID : 
+Note : if you are ever returning one item from a query it must use a unique field which is why we use id here. 
+
+query {
+  Product(where: {
+    id: "63b306774631d8323e645f12"
+  }) {
+    name
+    price
+    description
+  }
+}
+
+...and you should get back : 
+
+{
+  "data": {
+    "Product": {
+      "name": "Nice Map",
+      "price": 1099,
+      "description": "Find it!"
+    }
+  }
+}
+
+
+Query a single product from a list : 
+
+query {
+  
+  allProducts(where: {
+    name_contains_i: "map"      // i is insensitive 
+  }) {
+    name
+    price
+  }
+  
+}
+
+...and you should get back :  
+
+{
+  "data": {
+    "allProducts": [
+      {
+        "name": "Nice Map",
+        "price": 1099
+      }
+    ]
+  }
+}
+
+
+An aside, when logging out destructured "stuff" use { } so that it gets logged as an object : 
+console.log({ data, loading, error });
+
+
+Note : in SingleProduct.js, what we get back from our query is "Product".  It is capital "P" because this is what graphql returns back to us.  See the query : 
+
+const SINGLE_ITEM_QUERY = gql`
+  query SINGLE_ITEM_QUERY($id: ID!) {
+    Product(where: { id: $id }) {  //** Product will be returned back so   
+                                   // we need to access all the props 
+                                   // with Product.*
+      name
+      price
+      description
+    }
+  }
+`;
+
+For above, to change the name from what comes back from the API, here we renamed the query "items" and we will access the data with "data.items.*". 
+
+
+
+
+
+
