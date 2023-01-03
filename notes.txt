@@ -478,4 +478,19 @@ Then... whatever gets put in the <Head> tag Next.js will stick it in the Head of
 Gatsby we had to use react-helmet to do this.
 
 
-Start module 6
+Note : What params does this mutation need? say you're doing a mutation and need to see what args something like updateProduct() needs.  Go to the playground, put the cursor in the parens and you should see a dropdown of required args plus maybe even required types with "!" : 
+
+mutation {
+  updateProduct()  <--- what's gonna go in here? Oh no!!! 
+}
+
+
+
+
+
+
+Note : Rename the destructured variable : 
+
+ { data: updateData, error: updateError, loading: updateLoading }
+
+Stopped at 13:06
