@@ -493,4 +493,38 @@ Note : Rename the destructured variable :
 
  { data: updateData, error: updateError, loading: updateLoading }
 
-Stopped at 13:06
+
+Two ways : 
+With CreateProduct & UpdateProduct we are passing the inputs data to updateProduct() two different ways : 
+
+CreateProduct we are passing at definition : 
+
+const [createProduct, { loading, error, data }] = useMutation(
+    CREATE_PRODUCT_MUTATION,
+    {
+      variables: inputs, 
+      refetchQueries: [{ query: ALL_PRODUCTS_QUERY }], 
+    }
+  );
+
+
+
+UpdateProduct we are passing at on call : 
+
+
+    <Form
+      onSubmit={async (e) => {
+        e.preventDefault();
+        const res = await updateProduct({
+          variables: {
+            id,
+            data: {
+              name: inputs.name,
+              description: inputs.description,
+              price: inputs.price,
+            },
+          },
+        }).catch(console.error);
+
+
+Stopped at 24:20 where my code is not updating properly?  Note : to update use a refresh and not a btn click.
