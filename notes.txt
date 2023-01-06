@@ -579,9 +579,42 @@ We use join to give us a String.
 
 This whole thing happens once : it will go from a String of nothing to a String of the default values that are coming in.  
 
+Note : 
+When writing a graphql query or mutation and you need to find the graphql method you need to run, go to the playground, write the query/mutation and then type in some text to get autocomplete suggestions.  Once you find the method you need go to the docs in the playground and see what args it expects. 
+
+  Example : 
+  You want to write a mutation to delete a product.  Go to the playground and start typing... 
+
+  mutation {
+    "and I'm typing del... & then I get suggestions and choose deleteProduct" 
+  }
+
+  Then I go look in the docs and get this info :
+
+  Arguments : 
+  id: ID!
+  
+
+  Since we now know it takes an ID we pass it the id in the mutation. 
 
 
+Understanding this from playground docs : 
 
+Here, this says Product will be returned
+
+deleteProduct(
+id: ID!
+): Product
+
+
+In Type Details (playground) : 
+in this section all of fields listed are available once the delete returns the deleted item. 
+
+
+ At the end of video 30 Delete Products, you'll be able to delete an item but at this point you should refresh and then it gets deleted. 
+
+Deleting a product : 
+By the end of v 30, we can do the above.  The reason it still appears on the screen is that yes we have deleted from the DB but the item still needs to be removed from cache.  
 
 
 
