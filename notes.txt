@@ -527,4 +527,62 @@ UpdateProduct we are passing at on call :
         }).catch(console.error);
 
 
-Stopped at 24:20 where my code is not updating properly?  Note : to update use a refresh and not a btn click.
+useForm Hook Bug - why the updateproduct form only loads the data in the fields on page refresh : 
+
+the solution : 
+
+When the undefined initial state of loading changes to an actual object with data we need to update it.  
+
+We will use useEffect with this as we can monitor bits of state change.  
+
+The Why : 
+Has to do with initial data and how we are using it in the useForm() hook.  The initial state must be the existing data that we pulled from the DB.  When we refresh the page, we get the data because the initial load "of that" ??? is happening on the server. There is no loading state on the server as it just waits for the data to come back from our graphql API.  However, on the client there is a loading state.  So, you load the component, it loads for a quick second making it in a loading state, then "it" ?? gets the data back and then it runs "it" ?? 
+
+React doesn't like hooks being rendered out of order or not rendered or something that does not allow us to just use this conditional under the UpdateProduct() useQuery : 
+if (loading) return <p>Loading... <p> 
+And if we try to use it we get back " Error: Rendered more hooks than during previous render "
+
+The problem with this is that we don't want to create the useForm (I guess like render the form with the existing data???) until we have the data. 
+
+Again, we will use useEffect in useForm.  
+
+Gotcha : can't do this cause you'll get an infinite loop.  see video 29 min 4:25-ish. 
+
+  useEffect(() => {
+    setInputs(initial);
+  }, [initial]);
+
+The Loop : 
+If you listen to initial with useEffect(), it will update on a change but then that update causes a change so another update then another change and so on...
+
+
+  We need this bit instead : 
+
+
+  const initialValues = Object.values(initial).join('');
+
+  useEffect(() => {
+    // This function runs when the things we are watching change
+    setInputs(initial);
+  }, [initialValues]);
+
+
+  How this code works : 
+
+  This is what we will use to watch for a change.  We will watch the actual values on the object and when the values of name, price, description go from nothing to something we know there's been a change 
+
+  const initialValues = Object.values(initial).join('');
+
+Object.values gives us an Array of objects with the data.
+We use join to give us a String.
+
+
+This whole thing happens once : it will go from a String of nothing to a String of the default values that are coming in.  
+
+
+
+
+
+
+
+

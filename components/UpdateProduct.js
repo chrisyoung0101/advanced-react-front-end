@@ -28,9 +28,8 @@ const UPDATE_PRODUCT_MUTATION = gql`
     $description: String
     $price: Int
   ) {
-    udpateProduct(
+    updateProduct(
       id: $id
-      # here we do not want to pass the id as "id: $id" because we can't use ID here for some reason.
       data: { name: $name, description: $description, price: $price }
     ) {
       id
