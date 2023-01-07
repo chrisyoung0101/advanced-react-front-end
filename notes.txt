@@ -617,5 +617,43 @@ Deleting a product :
 By the end of v 30, we can do the above.  The reason it still appears on the screen is that yes we have deleted from the DB but the item still needs to be removed from cache.  
 
 
+Note on planning for pagination :
 
+Generally we want to have a set of 2,4,6, whatever # of items show per page and then 
+list how many possible pages there are.
+
+
+1. Render the actual links
+2. Allow for dynamic routing
+3. Filter the products for the current page
+4. Deal with Cache invalidation 
+
+Gotcha : 
+autoimport looks like this and does not work : 
+import { Link } from 'next/link';
+
+make it like this : 
+import Link from 'next/link';
+
+
+
+Keystone metaquery used in playgroung to get a count of items : 
+
+query {
+  _allProductsMeta {
+    count
+  }
+}
+
+
+
+Note : if you're checking for loading state but want to return nothing return null. 
+
+
+Note (This is a next.js thing) : 
+Link tag doesn't let us add new attributes like for example when we need aria-disabled for our pagination.  We need to use <a> inside the <Link> like : 
+
+<Link href={`/products/${page - 1}`}>
+  <a aria-disabled={page <= 1}>◀️ Prev</a>
+</Link>
 
