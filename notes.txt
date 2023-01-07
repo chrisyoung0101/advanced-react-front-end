@@ -635,6 +635,9 @@ import { Link } from 'next/link';
 make it like this : 
 import Link from 'next/link';
 
+...and for the above here's a case where {} does work : 
+export { default } from './index';
+
 
 
 Keystone metaquery used in playgroung to get a count of items : 
@@ -657,3 +660,27 @@ Link tag doesn't let us add new attributes like for example when we need aria-di
   <a aria-disabled={page <= 1}>◀️ Prev</a>
 </Link>
 
+
+
+Couple types of routing : 
+
+Query String Routing 
+localhost:7777/products?page=2
+
+File Based Routing
+localhost:7777/products/2
+
+
+
+Note : 
+in pages/products/index.js, we clg the router.
+look in the logs for query.
+query will have the current page number
+reason why query has this # is because we named 
+pages/products/[page].js with the []. 
+
+Note : 
+if you need to know what type something is use this : 
+console.log(typeof query.page); 
+
+Stopped at start of 34
