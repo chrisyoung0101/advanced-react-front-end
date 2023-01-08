@@ -726,15 +726,11 @@ When Apollo tries to query for allProducts, it first gets the items from read().
 merge() comes in when Apollo goes out to the network, gets data and says "Ok, you said you didn't have any data for me so I went out and got it myself from the network.  Here it is & then we run this merge() function.  merge() will handle how we want to manage our data.  
 
 
-
-
-
-
 Gotcha : 
 Must look like this in lib/paginationField.js or it breaks : 
 import { PAGINATION_QUERY } from '../components/Pagination';
 
-
+Stopped at 15:30
 
 
 

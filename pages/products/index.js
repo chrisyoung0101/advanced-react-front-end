@@ -17,13 +17,12 @@ export default function OrderPage() {
 
   // because page is coming in as a String and we need to add two #s so parse that shit...
   const page = parseInt(query.page);
-  console.log(typeof page);
 
   return (
     <div>
       {/* conditional : if no page passed to the query, default to page 1 */}
       <Pagination page={page || 1} />
-      <Products />
+      <Products page={page || 1} />
       <Pagination page={page || 1} />
     </div>
   );
