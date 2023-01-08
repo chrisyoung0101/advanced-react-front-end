@@ -683,4 +683,59 @@ Note :
 if you need to know what type something is use this : 
 console.log(typeof query.page); 
 
-Stopped at start of 34
+Cache invalidation : sucks but this is what we gotta do currently 
+
+
+Our Cache Validation problem and painful solution : 
+When we delete an item, it needs to be taken from the cache and then all the following items need to be moved up. 
+
+
+Below example : we are doing 2 products per page and each page is separated by a single -
+---
+1
+2
+-
+3
+4
+-
+5
+6
+--- delete product 3
+1
+2
+-
+"deleted 3- empty space - move below up" 
+4
+-
+5
+6
+--- shift items up 
+1
+2
+-
+4
+5
+-
+6
+---
+
+
+Apollo's read() & merge() : 
+
+When Apollo tries to query for allProducts, it first gets the items from read().  At this point, we can do 1 of 2 things : 1st, return the items because they are already in the cache.  Other thing we could do is if there are no items in the cache, return false, which will kick off a network request because when Apollo doesn't get anything from read() that it wants it will go out to the network (keystone) & try to get the items.
+merge() comes in when Apollo goes out to the network, gets data and says "Ok, you said you didn't have any data for me so I went out and got it myself from the network.  Here it is & then we run this merge() function.  merge() will handle how we want to manage our data.  
+
+
+
+
+
+
+Gotcha : 
+Must look like this in lib/paginationField.js or it breaks : 
+import { PAGINATION_QUERY } from '../components/Pagination';
+
+
+
+
+
+
