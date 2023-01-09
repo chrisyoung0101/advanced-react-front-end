@@ -730,8 +730,9 @@ Gotcha :
 Must look like this in lib/paginationField.js or it breaks : 
 import { PAGINATION_QUERY } from '../components/Pagination';
 
-Stopped at 15:30
+Note : 
+lib/paginationField.js -> if we do a successful read the first time we return the items.  If we had to use merge then we would do a read() first then a merge() then another read() to return the items. 
 
+You probably want to go over video 35 again.
 
-
-
+start module 8
