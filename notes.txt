@@ -735,4 +735,8 @@ lib/paginationField.js -> if we do a successful read the first time we return th
 
 You probably want to go over video 35 again.
 
-start module 8
+Module 8 : 
+
+
+Created useUser() custom hook which lives in User.js 
+
