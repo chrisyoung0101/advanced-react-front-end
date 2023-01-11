@@ -740,3 +740,8 @@ Module 8 :
 
 Created useUser() custom hook which lives in User.js 
 
+Use firefox incognito mode as it shows you as signed out. 
+
+In the SIGNIN_MUTATION, you can learn more about UserAuthenticationWithPasswordSuccess by looking at authenticateUserWithPassword method in the playground.  
+
+Stopped at 14:09
