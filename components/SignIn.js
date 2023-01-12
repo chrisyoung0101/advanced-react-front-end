@@ -4,13 +4,17 @@ import Form from './styles/Form';
 import useForm from '../lib/useForm';
 import { CURRENT_USER_QUERY } from './User';
 
+// this is the mutation var SIGNIN_MUTATION
 const SIGNIN_MUTATION = gql`
+  # this is the actual definition of SIGNIN_MUTATION mutation
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
-    ... on UserAuthenticationWithPasswordSuccess {
-      item {
-        id
-        email
-        name
+    authenticateUserWithPassword(email: $email, password: $password) {
+      ... on UserAuthenticationWithPasswordSuccess {
+        item {
+          id
+          email
+          name
+        }
       }
     }
   }
@@ -30,9 +34,11 @@ export default function SignIn() {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault(); // stop form from submitting
     console.log(inputs);
+    const res = await signin();
+    console.log(res);
     // Send email & password to the graphql API
   }
 
