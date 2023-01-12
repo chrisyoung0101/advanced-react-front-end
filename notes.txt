@@ -746,4 +746,4 @@ In the SIGNIN_MUTATION, you can learn more about UserAuthenticationWithPasswordS
 
 Tip : if you want to see the results of something stick it in a var and clg it.
 
-17
+When we successfully log in, we call refetchQueries which will change the NAV to show Sell tab in place of Sign In tab.  
