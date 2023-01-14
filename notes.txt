@@ -747,3 +747,11 @@ In the SIGNIN_MUTATION, you can learn more about UserAuthenticationWithPasswordS
 Tip : if you want to see the results of something stick it in a var and clg it.
 
 When we successfully log in, we call refetchQueries which will change the NAV to show Sell tab in place of Sign In tab.  
+
+Sign Out 
+
+Sign Up
+
+
+
+Gotcha : if you lost your keystone js admin PW go to MongoDB Atlas and drop the user.  Then go back to localhost:3000 where you will then be prompted to create a new first user.

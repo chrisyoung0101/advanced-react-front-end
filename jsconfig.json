@@ -1,0 +1,12 @@
+// jsconfig.json at project root
+
+// this tells VS Code that this is an Explicit Project which should fix auto import
+
+{
+  "compilerOptions": {
+    "module": "ES6",
+    "jsx": "preserve",
+    "checkJs": true
+  },
+  "exclude": ["node_modules", "**/node_modules/*"]
+}
