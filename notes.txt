@@ -755,3 +755,15 @@ Sign Up
 
 
 Gotcha : if you lost your keystone js admin PW go to MongoDB Atlas and drop the user.  Then go back to localhost:3000 where you will then be prompted to create a new first user.
+
+
+Password reset : 
+works kinda like this -> 
+When you request a PW reset, the BE will generate a random token.  Then you are emailed a link with that token in the URL.  Next, you pass back your email, new PW and the token. The BE checks if the token has been issued to you and if it has existed longer than 30 mins or whatever.
+
+
+
+Note that SignUp, SignIn, & RequestReset components are similar meaning we created one and created the other two by copying over the one and making a few edits for our needed functionality.
+
+
+Note : seems like whatever you have in the schema will show related stuff in the docs.
