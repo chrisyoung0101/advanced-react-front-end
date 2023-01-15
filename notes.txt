@@ -762,8 +762,22 @@ works kinda like this ->
 When you request a PW reset, the BE will generate a random token.  Then you are emailed a link with that token in the URL.  Next, you pass back your email, new PW and the token. The BE checks if the token has been issued to you and if it has existed longer than 30 mins or whatever.
 
 
+Reset.js was copied over from RequestReset.js as what they are doing is similar. 
+
+
 
 Note that SignUp, SignIn, & RequestReset components are similar meaning we created one and created the other two by copying over the one and making a few edits for our needed functionality.
 
 
 Note : seems like whatever you have in the schema will show related stuff in the docs.
+
+
+Note : a way to get values from the URL -> if you're in a page component just log out props 
+
+
+Example token in the URL :
+http://localhost:7777/reset?token=9UWX0VJ97Bnmv3mrnThW
+
+If you need a token for testing just go to the signin page, request the reset, look in CLI and there it is.
+
+Stopped at sending an email 
