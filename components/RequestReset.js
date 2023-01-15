@@ -15,8 +15,8 @@ import Error from './ErrorMessage';
 // }
 
 // when the form is sumbitted, create a user
-const REQUEST_RESET_MUTIATION = gql`
-  mutation REQUEST_RESET_MUTIATION($email: String!) {
+const REQUEST_RESET_MUTATION = gql`
+  mutation REQUEST_RESET_MUTATION($email: String!) {
     # from keystone
     sendUserPasswordResetLink(email: $email) {
       code
@@ -33,7 +33,7 @@ export default function RequestReset() {
 
   // call the mutation -> note : look at data by either destructuring from useMutation or below with signin()
   const [signup, { data, loading, error }] = useMutation(
-    REQUEST_RESET_MUTIATION,
+    REQUEST_RESET_MUTATION,
     {
       variables: inputs,
       // refetch the currently logged in user
