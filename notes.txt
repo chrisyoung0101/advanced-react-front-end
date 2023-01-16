@@ -7,6 +7,14 @@ open separately FE & BE
 in each DIR run : npm install
 run next.js app : npm run dev 
 
+
+
+Note : you don't want the .next folder to be in git.  If you've got a crazy amount of changes that you didn't make this is likely the culprit.  Remove .next from git with : 
+git rm -r --cached .next
+git commit -am 'remove .next from git'
+https://wesbos.slack.com/archives/C9G96G2UB/p1613042353349500?thread_ts=1613042147.348400&cid=C9G96G2UB
+
+
 /////
 children : 
 Scenario -> index.js or even App.js or whatever you are rendering the Page componet with an open tag <Page></Page> but inside you've got some child that you want to render.  In order to render the children you've got to pass it via props in the Page.js component : 
