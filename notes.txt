@@ -1,13 +1,13 @@
 
 
-goal : just to capture intalls and things
+goal : just to capture installs and things
 
 download zip 
 open separately FE & BE 
 in each DIR run : npm install
 run next.js app : npm run dev 
 
-
+npm run dev for the FE & the BE 
 
 Note : you don't want the .next folder to be in git.  If you've got a crazy amount of changes that you didn't make this is likely the culprit.  Remove .next from git with : 
 git rm -r --cached .next
@@ -788,4 +788,8 @@ http://localhost:7777/reset?token=9UWX0VJ97Bnmv3mrnThW
 
 If you need a token for testing just go to the signin page, request the reset, look in CLI and there it is.
 
-Stopped at sending an email 
+Cart : 
+
+note : if you create a new schema it needs to be put in keystone.js as well.
+
+note : when creating a Cart Item directly in KeystoneJS UI, you should select the user's name and then click the btn to set it to the user.
