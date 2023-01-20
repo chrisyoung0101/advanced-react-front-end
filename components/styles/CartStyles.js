@@ -11,12 +11,15 @@ const CartStyles = styled.div`
   width: 40%;
   min-width: 500px;
   bottom: 0;
+  /* off screen */
   transform: translateX(100%);
   transition: all 0.3s;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
   z-index: 5;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  /* this prop is passed in from Cart.js */
+  /* this line says : if the props.open is true then transform: translateX(0) aka on screen <- default is translateX(100%) see above*/
   ${(props) => props.open && `transform: translateX(0);`};
   header {
     border-bottom: 5px solid var(--black);

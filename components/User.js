@@ -1,4 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
+import PriceTag from './styles/PriceTag';
 
 // Custom Hook
 
@@ -10,7 +11,21 @@ export const CURRENT_USER_QUERY = gql`
         id
         email
         name
-        # TODO: Query the cart once we have it
+        cart {
+          id
+          quantity
+          product {
+            id
+            price
+            name
+            description
+            photo {
+              image {
+                publicUrlTransformed
+              }
+            }
+          }
+        }
       }
     }
   }

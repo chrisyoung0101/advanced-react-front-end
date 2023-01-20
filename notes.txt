@@ -793,3 +793,5 @@ Cart :
 note : if you create a new schema it needs to be put in keystone.js as well.
 
 note : when creating a Cart Item directly in KeystoneJS UI, you should select the user's name and then click the btn to set it to the user.
+
+Stopped at 14:33
