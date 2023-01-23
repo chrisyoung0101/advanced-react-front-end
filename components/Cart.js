@@ -76,3 +76,7 @@ export default function Cart() {
 }
 
 // We don't need to check for an empty cart -> it will deafult to an empty Array from the graphql API
+
+// Local State : In React, this is state that just exists in the browser. For example, when we use our forms like input boxes and such - this state is only there (really?) until we submit that form data to the backend.
+
+// Another type of local state we need, & particulary for this cart, we need state that will handle if it is closed or open.  This state will need to be reflected in several places.  We want the function that handles open/close to be available anywhere in our application.  For this we use React Context : allows us to define data aka local state or really anything (?) & also to define functionality we get from our helper functions. We define this Context at a high level then share it down to any components needing that data.
