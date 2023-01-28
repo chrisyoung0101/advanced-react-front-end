@@ -4,6 +4,7 @@ import { useUser } from './User';
 import Supreme from './styles/Supreme';
 import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
+import { useCart } from '../lib/cartState';
 
 const CartItemStyles = styled.li`
   padding: 1rem 0;
@@ -49,6 +50,7 @@ function CartItem({ cartItem }) {
 // obviously this is the main component in this file
 export default function Cart() {
   const me = useUser();
+  const { cartOpen, closeCart } = useCart(); // {cartOpen: true}  or false
   // if there is no me then return null
   if (!me) return null;
 
@@ -59,10 +61,11 @@ export default function Cart() {
   // so defaults to true which is the cart is open
   // open is a prop we are passing to CartStyles -> see cart styles
   return (
-    <CartStyles open>
+    <CartStyles open={cartOpen}>
       <header>
         <Supreme>{me.name}'s Cart</Supreme>
       </header>
+      <button onClick={closeCart}>&times;</button>
       <ul>
         {me.cart.map((cartItem) => (
           <CartItem key={cartItem.id} cartItem={cartItem} />
