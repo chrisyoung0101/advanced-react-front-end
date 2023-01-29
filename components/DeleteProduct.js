@@ -14,9 +14,9 @@ const DELETE_PRODUCT_MUTATION = gql`
 // cache : Apollo Cache that we are trying to remove an item from
 // payload : what gets returned from the update of the mutation
 function update(cache, payload) {
-  console.log(`cache ${cache}`);
-  console.log(`Payload ${payload}`);
-  console.log('running the udpate func after delete');
+  // console.log(`cache ${cache}`);
+  // console.log(`Payload ${payload}`);
+  // console.log('running the udpate func after delete');
 
   // find the item to be deleted in Apollo cache then pass it to evict()
   // this is Apollo API

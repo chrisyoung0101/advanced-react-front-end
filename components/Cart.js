@@ -5,6 +5,7 @@ import Supreme from './styles/Supreme';
 import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../lib/cartState';
+import CloseButton from './styles/CloseButton';
 
 const CartItemStyles = styled.li`
   padding: 1rem 0;
@@ -55,7 +56,7 @@ export default function Cart() {
   if (!me) return null;
 
   // shows the cart value with the items in the cart
-  console.log(me);
+  // console.log(me);
 
   // open={true} gets saved to open.
   // so defaults to true which is the cart is open
@@ -64,8 +65,8 @@ export default function Cart() {
     <CartStyles open={cartOpen}>
       <header>
         <Supreme>{me.name}'s Cart</Supreme>
+        <CloseButton onClick={closeCart}>&times;</CloseButton>
       </header>
-      <button onClick={closeCart}>&times;</button>
       <ul>
         {me.cart.map((cartItem) => (
           <CartItem key={cartItem.id} cartItem={cartItem} />

@@ -50,7 +50,7 @@ export default function CreateProduct() {
     }
   );
 
-  console.log(createProduct);
+  // console.log(createProduct);
 
   return (
     <Form

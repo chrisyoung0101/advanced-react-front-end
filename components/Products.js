@@ -42,7 +42,7 @@ export default function Products({ page }) {
       first: perPage,
     },
   });
-  console.log(data, error, loading);
+  // console.log(data, error, loading);
   // to test : nav to another page, refresh, go to Products page, Loading... should flash
   if (loading) return <p>Loading...</p>;
 

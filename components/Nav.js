@@ -2,12 +2,14 @@ import Link from 'next/link';
 import NavStyles from './styles/NavStyles';
 import { useUser } from './User';
 import SignOut from './SignOut';
+import { useCart } from '../lib/cartState';
 
 const puppy = 'Remove this';
 
 export default function Nav() {
   const user = useUser();
   // console.log(user);
+  const { openCart } = useCart();
   return (
     <NavStyles>
       <Link href="/products">Products</Link>
@@ -18,6 +20,9 @@ export default function Nav() {
           <Link href="/orders">Orders</Link>
           <Link href="/account">Account</Link>
           <SignOut />
+          <button type="button" onClick={openCart}>
+            My Cart
+          </button>
         </>
       )}
       {/* if no user signed in, send to sign in page */}

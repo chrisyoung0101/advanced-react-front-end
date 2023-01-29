@@ -57,7 +57,7 @@ export default function UpdateProduct({ id }) {
   // 2.5 - Create some state for the form inputs
   // using curly braces because we are returning an object from useForm() custom hook
   const { inputs, handleChange, clearForm, resetForm } = useForm(data?.Product); // if there is data... then pass the Product
-  console.log(inputs);
+  // console.log(inputs);
   // without this data? conditional above, you get "TypeError: Cannot read properties of undefined (reading 'Product')" because we might be in a loading state and the data just not available yet?
   if (loading) return <p>loading...</p>;
 
@@ -76,7 +76,7 @@ export default function UpdateProduct({ id }) {
             price: inputs.price,
           },
         }).catch(console.error);
-        console.log(res);
+        // console.log(res);
         // Submit the input fields to the backend:
         // createProduct() function has already been loaded with our user data from variables: inputs,
         // so... you can pass them like above (for when you already know the values at the time of submission) or

@@ -40,10 +40,10 @@ export default function SignUp() {
 
   async function handleSubmit(e) {
     e.preventDefault(); // stop form from submitting
-    console.log(inputs);
+    // console.log(inputs);
     const res = await signup().catch(console.error); // catching the error here just stops an annoying Uncaught error.  We are already handling errors by destructuring error in useMutation
-    console.log(res);
-    console.log({ data, loading, error });
+    // console.log(res);
+    // console.log({ data, loading, error });
     // clear form after submitting
     resetForm();
     // Send email & password to the graphql API

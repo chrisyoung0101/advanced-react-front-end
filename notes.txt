@@ -799,3 +799,4 @@ React Context :
 See notes in cartState.js
 
 Stopped at 13:01 - why is my close button so big?
+

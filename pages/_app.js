@@ -23,7 +23,7 @@ Router.events.on('routeChangeError', () => NProgress.done());
 // often need to restart project when adding such a change for it to start working
 
 function MyApp({ Component, pageProps, apollo }) {
-  console.log(apollo);
+  // console.log(apollo);
   return (
     <ApolloProvider client={apollo}>
       <CartStateProvider>
