@@ -798,5 +798,23 @@ note : when creating a Cart Item directly in KeystoneJS UI, you should select th
 React Context : 
 See notes in cartState.js
 
-Stopped at 13:01 - why is my close button so big?
+Tip : 
+From playground graphql docs : 
+
+This reads : addToCart function takes in productID as an arg and returns CartItem 
+
+Mutation.addToCart(
+productID: ID
+): CartItem
+
+Note : manually add an item to your cart 
+get the productId from keystone dashboard and then run it in this query in the playground : 
+mutation {
+  addToCart(productId: "639f7f6b615ae81055a9ea2e") {
+    id 
+    quantity
+  }
+}
+
+If there is an item there already it just increments by 1. 
 
