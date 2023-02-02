@@ -21,7 +21,7 @@ const REMOVE_FROM_CART_MUTATION = gql`
 `;
 
 function update(cache, payload) {
-  const eviction = cache.evict(cache.identify(payload.data.deleteCartitem));
+  cache.evict(cache.identify(payload.data.deleteCartitem));
 }
 
 export default function RemoveFromCart({ id }) {
