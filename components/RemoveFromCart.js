@@ -1,5 +1,6 @@
+import { useMutation } from '@apollo/client';
+import gql from 'graphql-tag';
 import styled from 'styled-components';
-import { gql, useMutation } from '@apollo/client';
 
 const BigButton = styled.button`
   font-size: 3rem;
@@ -19,9 +20,14 @@ const REMOVE_FROM_CART_MUTATION = gql`
   }
 `;
 
+function update(cache, payload) {
+  const eviction = cache.evict(cache.identify(payload.data.deleteCartitem));
+}
+
 export default function RemoveFromCart({ id }) {
   const [removeFromCart, { loading }] = useMutation(REMOVE_FROM_CART_MUTATION, {
     variables: { id },
+    update,
   });
 
   return (
