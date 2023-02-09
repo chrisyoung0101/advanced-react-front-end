@@ -820,3 +820,20 @@ If there is an item there already it just increments by 1.
 
 CartCount.js : 
 
+Upgrade : 
+
+??? : mine has sesh
+id: session.itemId → id: { equals: session!.itemId 
+
+
+DATABASE_URL=mongodb+srv://MongoDBSickFits:AdarRyZv4uJODmGI@sickcluster.ja3hitd.mongodb.net/?retryWrites=true&w=majority
+
+
+
+
+/Users/chrisyoung/Documents/Advanced-React-master/sick-fits/backend
+
+
+/Users/chrisyoung/Documents/Advanced-React-master/sick-fits/frontend
+
+stopped at 18:28 & it don't work.
