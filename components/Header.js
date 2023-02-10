@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Nav from './Nav';
@@ -35,6 +36,21 @@ const HeaderStyles = styled.header`
   }
 `;
 
+// needed to fix bug in dropdown results
+function ClientOnly({ children, ...delegated }) {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
+
+  return <div {...delegated}>{children}</div>;
+}
+
 export default function Header() {
   return (
     <HeaderStyles>
@@ -45,9 +61,11 @@ export default function Header() {
         <Nav />
       </div>
       <div className="sub-bar">
-        <Search />
-        <Cart />
+        <ClientOnly>
+          <Search />
+        </ClientOnly>
       </div>
+      <Cart />
     </HeaderStyles>
   );
 }
