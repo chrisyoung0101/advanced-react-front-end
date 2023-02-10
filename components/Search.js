@@ -29,7 +29,6 @@ export default function Search() {
   const [findItems, { loading, data, error }] = useLazyQuery(
     SEARCH_PRODUCTS_QUERY,
     {
-      // don't cache the results
       fetchPolicy: 'no-cache',
     }
   );
