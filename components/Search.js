@@ -2,6 +2,7 @@ import { useLazyQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import { resetIdCounter, useCombobox } from 'downshift';
 import debounce from 'lodash.debounce';
+import { useRouter } from 'next/dist/client/router';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
 const SEARCH_PRODUCTS_QUERY = gql`
@@ -26,13 +27,15 @@ const SEARCH_PRODUCTS_QUERY = gql`
 `;
 
 export default function Search() {
+  const router = useRouter();
   const [findItems, { loading, data, error }] = useLazyQuery(
     SEARCH_PRODUCTS_QUERY,
     {
       fetchPolicy: 'no-cache',
     }
   );
-  console.log(data);
+  const items = data?.searchTerms || [];
+  // console.log(data);
   // run the search every 350ms, not each time a char is typed
   const findItemsButChill = debounce(findItems, 350);
 
@@ -45,9 +48,9 @@ export default function Search() {
     getInputProps,
     getComboboxProps,
     getItemProps,
-    highLightedIndex,
+    highlightedIndex,
   } = useCombobox({
-    items: [],
+    items,
     onInputValueChange() {
       console.log('Input changed!');
       findItemsButChill({
@@ -56,9 +59,14 @@ export default function Search() {
         },
       });
     },
-    onSelectedItemChange() {
-      console.log('Selected Item changed!');
+    // change the page on drowdown item click
+    onSelectedItemChange({ selectedItem }) {
+      router.push({
+        pathname: `/product/${selectedItem.id}`,
+      });
     },
+    // put the name of the item in the search box - > reads, if there is an item name available add to the search box OR empty string.
+    itemToString: (item) => item?.name || '',
   });
 
   return (
@@ -69,15 +77,30 @@ export default function Search() {
             type: 'search',
             placeholder: 'Search for an Item',
             id: 'search',
-            className: 'loading',
+            className: loading ? 'loading' : '',
           })}
         />
       </div>
+      {/* isOpen allows us to click outside the dropdown and make it go away */}
       <DropDown {...getMenuProps()}>
-        <DropDownItem>Hey</DropDownItem>
-        <DropDownItem>Hey</DropDownItem>
-        <DropDownItem>Hey</DropDownItem>
-        <DropDownItem>Hey</DropDownItem>
+        {isOpen &&
+          items.map((item, index) => (
+            <DropDownItem
+              key={item.id}
+              {...getItemProps({ item, index })}
+              highlighted={index === highlightedIndex}
+            >
+              <img
+                src={item.photo.image.publicUrlTransformed}
+                alt={item.name}
+                width="50"
+              />
+              {item.name}
+            </DropDownItem>
+          ))}
+        {isOpen && !items.length && !loading && (
+          <DropDownItem>Sorry, No items found for {inputValue}</DropDownItem>
+        )}
       </DropDown>
     </SearchStyles>
   );
