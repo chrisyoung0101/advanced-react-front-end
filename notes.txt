@@ -836,4 +836,12 @@ DATABASE_URL=mongodb+srv://MongoDBSickFits:AdarRyZv4uJODmGI@sickcluster.ja3hitd.
 
 /Users/chrisyoung/Documents/Advanced-React-master/sick-fits/frontend
 
-stopped at 18:28 & it don't work.
+Stripe does this :
+ 1. captures the users Credit Card data on the Client. 
+ 2. This gets sent to Stripe.  Stripe returns a token : "good for one CC charge of how much you want"
+ 3. Give the token to the server side & process the transaction.
+
+
+ There's a shit ton of compliance to deal with if you are handling CC #'s on your server.  Stripe does the heavy lifting for us and we don't have to worry about compliance.  Stripe only ever uses tokens.
+ 
+

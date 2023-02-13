@@ -5,14 +5,13 @@ import SignOut from './SignOut';
 import { useCart } from '../lib/cartState';
 import CartCount from './CartCount';
 
-const puppy = 'Remove this';
-
 export default function Nav() {
   const user = useUser();
   // console.log(user);
   const { openCart } = useCart();
   return (
     <NavStyles>
+      {process.env.NEXT_PUBLIC_STRIPE_KEY}
       <Link href="/products">Products</Link>
       {/* only show this content when user is logged in */}
       {user && (
