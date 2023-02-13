@@ -56,7 +56,7 @@ function CheckoutForm() {
 
   return (
     <CheckoutFormStyles onSubmit={handleSubmit}>
-      {error && <p style={{ fontSize: 12 }}>{error}</p>}
+      {error && <p style={{ fontSize: 12 }}>{error.message}</p>}
       <CardElement />
       <SickButton>Check Out Now</SickButton>
     </CheckoutFormStyles>
