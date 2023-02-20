@@ -845,3 +845,37 @@ Stripe does this :
  There's a shit ton of compliance to deal with if you are handling CC #'s on your server.  Stripe does the heavy lifting for us and we don't have to worry about compliance.  Stripe only ever uses tokens.
  
 
+
+Note & Gotcha : Commit takes long time 
+if your commits take super long than possibly you need two things to do : 
+
+1) get the .gitignore from wes's repo 
+2) Run these commands as you might be commiting your
+.next which you don't want to do : 
+
+git rm -r --cached .next
+git commit -am 'remove .next from git'
+
+... at the end you might need to restart vs code then attempt commit again 
+
+video 56 : 
+Linking up our Frontend to the custom backend checkout mutation
+
+Testing : 
+- On the FE, in Checkout.js, Use the console.log(paymentMethod); this will containt the id
+- On the BE, we will tak the id that comes back with the paymentMethod. In checkout.ts, use the console.log(charge);
+-From here, if this all works, we can write the mutation and finish hooking things up.
+-So, type in the card info : 
+4242 4242 4242 4242 
+... and you get back an id like this is in the console : 
+pm_1MdcmZEdNpIcJZOECJa7FQHf
+-Restart the BE, Take this id and plug it into our playground mutation test thing : 
+-Note that tokens are good for one try only
+-When all successful you'll see the log of the charge in your BE CLI, also will show up in your Stripe Payments section with "succeeded." 
+
+
+
+
+
+
+
