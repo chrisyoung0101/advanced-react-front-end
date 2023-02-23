@@ -874,6 +874,13 @@ pm_1MdcmZEdNpIcJZOECJa7FQHf
 -When all successful you'll see the log of the charge in your BE CLI, also will show up in your Stripe Payments section with "succeeded." 
 
 
+verify an order : 
+place the order 
+go to devtools and grab the id
+compare the id to orders in the BE
+go to stripe payments to confirm payment on that order.
+When you refresh the page, nothing should be in cart.
+
 
 
 
