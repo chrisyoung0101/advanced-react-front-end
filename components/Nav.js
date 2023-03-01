@@ -11,7 +11,7 @@ export default function Nav() {
   const { openCart } = useCart();
   return (
     <NavStyles>
-      {process.env.NEXT_PUBLIC_STRIPE_KEY}
+      {/* {process.env.NEXT_PUBLIC_STRIPE_KEY} */}
       <Link href="/products">Products</Link>
       {/* only show this content when user is logged in */}
       {user && (
@@ -24,7 +24,8 @@ export default function Nav() {
             My Cart
             <CartCount
               count={user.cart.reduce(
-                (tally, cartItem) => tally + cartItem.quantity,
+                (tally, cartItem) =>
+                  tally + (cartItem.quantity ? cartItem.quantity : 0),
                 0
               )}
             />

@@ -881,7 +881,15 @@ compare the id to orders in the BE
 go to stripe payments to confirm payment on that order.
 When you refresh the page, nothing should be in cart.
 
+video 58 : Housekeeping items 
 
+1. Cart shows 12 items 
+
+2. change the page when the order is created  
+
+3. Close the cart
+
+4. Refetch the users cart when they buy something.
 
 
 
