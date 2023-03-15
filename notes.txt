@@ -891,6 +891,12 @@ video 58 : Housekeeping items
 
 4. Refetch the users cart when they buy something.
 
+Video 60 
+
+If React says you already used a key like you've used the same id twice then just wrap it in something like this where the text "image-" makes this particular key unique : 
+
+key={`image-${item.id}`}
+
 
 
 
