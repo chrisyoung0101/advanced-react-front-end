@@ -898,5 +898,5 @@ If React says you already used a key like you've used the same id twice then jus
 key={`image-${item.id}`}
 
 
-
+stopped at : finished video 62
 
