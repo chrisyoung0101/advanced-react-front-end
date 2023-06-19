@@ -115,11 +115,13 @@ recommended : use MongoDB Atlas
 
 
 MongoDB database username & PW : 
+don't use ???
 wallwalker
 AL2Fh6SSapPZFGTI
 
 In MongoDB, create a new Organization for each new project
 
+USE THIS ONE : 
 MongoDB database user (goes in the .env file with theDATABASE_URL): 
 MongoDBSickFits
 AdarRyZv4uJODmGI
